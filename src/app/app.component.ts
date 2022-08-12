@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularProject';
+  Titulo: string = ""
+
+  public salvarDado(){
+    this.Titulo = (document.querySelector("#idInput") as HTMLInputElement).value
+  }
+
+  public limparCampo(){
+    (document.querySelector("#idInput") as HTMLInputElement).value = ""
+  }
 }
