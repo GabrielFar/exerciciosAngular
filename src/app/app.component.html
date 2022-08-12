@@ -1,6 +1,9 @@
 <div>
   <h1 class="clMargin">{{Titulo}}</h1>
-  <input class="clMargin" type="text" id="idInput">
+  <input class="clMargin" type="text"
+         [value] = "value"
+         (input) = "Input = campoInput.value"
+         #campoInput>
   <section>
     <button class="clMargin" (click)="salvarDado()">Salvar</button>
     <button class="clMargin" (click)="limparCampo()">Limpar</button>
