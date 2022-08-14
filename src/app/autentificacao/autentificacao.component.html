@@ -1,27 +1,32 @@
 <div class="mt-5">
-    <section class="shadow-lg p-3 mb-5 bg-body rounded container-sm" >
-        <h2>Login</h2>
+    <section class="shadow-lg p-3 mb-5 bg-body rounded container-sm pe-4" >
+        <h2 class="ms-1">Login</h2>
 
         <div class="m-2 d-block mt-3">
             <label class="text-secondary d-block mb-1" for="idEmail">E-Mail Address</label>
-            <input type="text" id="idEmail">
         </div>        
+        <input class="w-100 m-2 rounded border border-gray p-1" type="text" id="idEmail"
+                (input) = "email = campoEmail.value"
+                #campoEmail>
 
-        <div class="m-2">
-            
-            <label class="text-secondary mb-1 mt-3" for="idPassword">Password</label>
-            <a href="" >Forgot Password?</a>
-            <input type="text" id="idPassword" class="d-block"> 
-            
+        <div class="row ps-2 mt-3">            
+            <label class="text-secondary col-sm-6" for="idPassword">Password</label>
+            <div class="col-sm-6 text-end"><a href="" >Forgot Password?</a></div>    
         </div>
         
-        <div class="m-2 d-block">
-            <input type="checkbox" name="nmRememberMe" id="idRememberMe" class="me-1">
-            <label for="idRememberMe">Remember Me</label>
-            <button class="btn btn-primary">Login</button>
+        <input class="d-block m-2 w-100 rounded border border-gray p-1" type="text" id="idPassword"
+                (input) = "senha = campoSenha.value"
+                #campoSenha> 
+        
+        <div class="m-2 d-block row d-flex mb-4">
+            <div class="col-sm-6">
+                <input type="checkbox" name="nmRememberMe" id="idRememberMe" class="me-1">
+                <label for="idRememberMe">Remember Me</label>
+            </div>
+            <div class="col-sm-6 text-end"><button class="btn btn-primary" (click)="login()">Login</button></div>
         </div>
 
-        <p></p>
+        <p [class]="msnStyle">{{msn}}</p>
 
         <div class="d-flex justify-content-center">
             <p>Don't have an account? <a href="" class="text-black">Create One</a></p>
