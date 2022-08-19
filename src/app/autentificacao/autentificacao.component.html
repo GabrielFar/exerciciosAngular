@@ -3,20 +3,18 @@
         <h2 class="ms-1">Login</h2>
 
         <div class="m-2 d-block mt-3">
-            <label class="text-secondary d-block mb-1" for="idEmail">E-Mail Address</label>
+            <label class="text-secondary d-block" for="idEmail">E-Mail Address</label>
         </div>        
         <input class="w-100 m-2 rounded border border-gray p-1" type="text" id="idEmail"
-                (input) = "email = campoEmail.value"
-                #campoEmail>
+                [(ngModel)] = "usuario.userId">
 
         <div class="row ps-2 mt-3">            
-            <label class="text-secondary col-sm-6" for="idPassword">Password</label>
+            <label class="text-secondary col-sm-6 mb-2" for="idPassword">Password</label>
             <div class="col-sm-6 text-end"><a href="" >Forgot Password?</a></div>    
         </div>
         
         <input class="d-block m-2 w-100 rounded border border-gray p-1" type="text" id="idPassword"
-                (input) = "senha = campoSenha.value"
-                #campoSenha> 
+            [(ngModel)] = "usuario.password"> 
         
         <div class="m-2 d-block row d-flex mb-4">
             <div class="col-sm-6">
@@ -26,7 +24,13 @@
             <div class="col-sm-6 text-end"><button class="btn btn-primary" (click)="login()">Login</button></div>
         </div>
 
-        <p [class]="msnStyle">{{msn}}</p>
+        <div class="d-flex justify-content-center m-2" >
+            <div *ngIf="msn !== undefined; else spinner" [ngClass]="classe">{{msn}}</div>
+        </div>
+        
+        <ng-template #spinner>
+            <div class="spinner-border text-dark" *ngIf="isSpinnerOn"></div>
+        </ng-template>
 
         <div class="d-flex justify-content-center">
             <p>Don't have an account? <a href="" class="text-black">Create One</a></p>

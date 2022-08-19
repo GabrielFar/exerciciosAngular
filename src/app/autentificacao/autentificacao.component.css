@@ -1,3 +1,16 @@
 section{
     width: 400px;
 }
+
+.clCentralizar{
+    display: flex;
+    justify-content: center;
+}
+
+.clDanger{
+    color: red;
+}
+
+.clSuccess{
+    color: green;
+}
