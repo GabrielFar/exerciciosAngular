@@ -1,13 +1,32 @@
-<div>
-  <h1 class="clMargin">{{Titulo}}</h1>
-  <input class="clMargin" type="text"
-         [value] = "value"
-         (input) = "Input = campoInput.value"
-         #campoInput>
-  <section>
-    <button class="clMargin" (click)="salvarDado()">Salvar</button>
-    <button class="clMargin btn-primary" (click)="limparCampo()">Limpar</button>
-  </section>
-</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/">Home <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contato">Contato</a>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <div *ngIf="localStorage == 0; else logado"><button class="btn btn-outline-danger" disabled>Deslogado</button></div>
 
-<app-autentificacao></app-autentificacao>
+    <ng-template #logado>
+      <button class="btn btn-outline-danger" (click)="deslogar()">Logado</button>
+    </ng-template>
+
+  </div>
+    
+</nav>
+
+<router-outlet></router-outlet>
+
+<div id="footer">
+  <div class="container">
+    <p class="text-muted credit" style="color:#fff">Email: gabriel.farina2358@gmail.com    WhatsApp: (49) 984297233    GitHub: https://github.com/GabrielFar</p>
+  </div>
+</div>

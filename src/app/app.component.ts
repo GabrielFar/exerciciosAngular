@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,17 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularProject';
-  Input: string = ""
-  Titulo: string = ""
-  value: string = ""
+  localStorage = localStorage['token']
 
-  public salvarDado(){
-    this.Titulo = this.Input
-    this.value = this.Input
+  constructor(private router: Router){}
 
-  }
-
-  public limparCampo(){    
-    this.value = ""
+  public deslogar(){
+    localStorage['token'] = 0
+    this.router.navigate(['/login']);
+    this.localStorage = 0
   }
 }

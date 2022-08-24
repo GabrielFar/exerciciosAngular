@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 import { Usuario } from "../interfaces/usuario";
 import { ServiceService } from "../services/service.service";
 
@@ -27,21 +28,21 @@ export class AutentificacaoComponent{
         tipo: ""
     }    
     
-    constructor (private serviceService: ServiceService) {}
+    constructor (private serviceService: ServiceService, private router: Router) {}
     
     public login(){
         this.msn = undefined
         this.isSpinnerOn = true
         
         this.serviceService.getUsuario().subscribe((usu) => (this.usuárioServer = usu[0]))
-        
-        console.log(this.usuárioServer);        
-        
+                
         setTimeout(() => {
             if(this.usuario.password == this.usuárioServer.password && this.usuario.userId == this.usuárioServer.userId && this.isBloqueado == false){
                 this.msn = "Logado!"
                 this.contaTentativasSenha = 0
                 this.classe = ["clCentralizar", "clSuccess"]
+                localStorage['token'] = 1                    
+                this.router.navigate(['/']);
     
             } else if (this.contaTentativasSenha >= 3) {
                 this.msn = "Usuário Bloqueado!"
