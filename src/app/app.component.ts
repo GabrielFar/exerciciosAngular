@@ -8,13 +8,15 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'angularProject';
-  localStorage = localStorage['token']
 
   constructor(private router: Router){}
 
   public deslogar(){
-    localStorage['token'] = 0
+    localStorage['token'] = "deslogado"
     this.router.navigate(['/login']);
-    this.localStorage = 0
+  }
+
+  public readLocalStorageToken() {
+    return localStorage['token'];
   }
 }
