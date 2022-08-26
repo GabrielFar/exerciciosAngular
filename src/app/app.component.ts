@@ -12,11 +12,15 @@ export class AppComponent {
   constructor(private router: Router){}
 
   public deslogar(){
-    localStorage['token'] = "deslogado"
+    localStorage['token'] = "false"
     this.router.navigate(['/login']);
   }
 
   public readLocalStorageToken() {
-    return localStorage['token'];
+    if (localStorage['token'] === "true") {
+      return true
+    } else {
+      return false
+    }
   }
 }

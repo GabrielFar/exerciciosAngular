@@ -41,7 +41,7 @@ export class AutentificacaoComponent{
                 this.msn = "Logado!"
                 this.contaTentativasSenha = 0
                 this.classe = ["clCentralizar", "clSuccess"]
-                localStorage['token'] = "logado"                    
+                localStorage['token'] = "true"                  
                 this.router.navigate(['/']);
     
             } else if (this.contaTentativasSenha >= 3) {

@@ -10,14 +10,7 @@
     </ul>
   </div>
   <div>
-    <div *ngIf="readLocalStorageToken() == 'deslogado'; else logado">
-      <button class="btn btn-outline-danger" disabled>Sing Out</button>
-    </div>
-
-    <ng-template #logado>
-      <button class="btn btn-outline-danger" (click)="deslogar()">Sign Out</button>
-    </ng-template>
-
+    <button class="btn btn-outline-danger" [disabled]="!readLocalStorageToken()" (click)="deslogar()">Sing Out</button>
   </div>
     
 </nav>
