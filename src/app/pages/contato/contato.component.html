@@ -1,1 +1,99 @@
-<p>contato works!</p>
+<form [formGroup]="formulario" class="mt-5">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3 text-center">
+            <!--Nome-->
+            <div class="mt-3">
+                <input type="text" id="idNome" formControlName="nome" autocomplete="off" placeholder="Insira seu Nome">
+            </div>
+            <div *ngIf="!(formulario.get('nome')?.touched) || 
+            (formulario.get('nome')?.errors?.[''] === null)">‎</div> <!--Posicionamento-->
+
+            <div *ngIf="formulario.get('nome')?.errors?.['required'] && formulario.get('nome')?.touched"
+                class="text-danger">
+                Nome Obrigatório*
+            </div>
+            <div *ngIf="formulario.get('nome')?.errors?.['pattern'] && formulario.get('nome')?.touched"
+                class="text-danger">
+                Nome Somente em Maiúsculas
+            </div>
+        
+        <!--Telefone-->
+            <div class="mt-3">
+                <input type="text" id="idTelefone" formControlName="telefone" autocomplete="off" placeholder="Insira seu Telefone">
+            </div>
+            <div>‎</div>
+
+            <!--Email-->
+            <div class="mt-3">
+                <input type="text" id="idEmail" formControlName="email" autocomplete="off" placeholder="Insira seu Email">
+            </div>
+            <div *ngIf="formulario.get('email')?.errors?.['required'] && formulario.get('email')?.touched"
+            class="text-danger">
+                Email Obrigatório*
+            </div>
+            <div *ngIf="formulario.get('email')?.errors?.['email'] && formulario.get('email')?.touched"
+            class="text-danger">
+                Formato de Email Inválido
+            </div>
+
+        </div>
+        <div class="col-sm-3 text-center">
+
+            <!--CEP-->
+            <div class="mt-3">
+                <input type="text" id="idCep" formControlName="cep" autocomplete="off" placeholder="Insira seu CEP">
+            </div>
+            <div *ngIf="!(formulario.get('cep')?.touched) || 
+            (formulario.get('cep')?.errors?.[''] === null)">‎</div> <!--Posicionamento-->
+
+            <div *ngIf="formulario.get('cep')?.errors?.['required'] && formulario.get('cep')?.touched"
+            class="text-danger">
+                CEP Obrigatório*
+            </div>
+            <div *ngIf="(formulario.get('cep')?.errors?.['maxlength'] || formulario.get('cep')?.errors?.['pattern']
+            || formulario.get('cep')?.errors?.['minlength']) && formulario.get('cep')?.touched" 
+            class="text-danger">
+                CEP Inválido
+            </div>
+
+            <!--Assunto-->
+            <div class="mt-3">
+                <input type="text" id="idAssunto" formControlName="assunto" autocomplete="off" placeholder="Insira Assunto">
+            </div>
+            <div *ngIf="!(formulario.get('assunto')?.touched) || 
+            (formulario.get('assunto')?.errors?.[''] === null)">‎</div> <!--Posicionamento-->
+
+            <div *ngIf="formulario.get('assunto')?.errors?.['required'] && formulario.get('assunto')?.touched"
+            class="text-danger">
+                Assunto Obrigatório*
+            </div>
+            <div *ngIf="formulario.get('assunto')?.errors?.['maxlength'] && formulario.get('assunto')?.touched"
+            class="text-danger">
+                Respeite o Limite de 50 Caracteres
+            </div>
+
+            <!--Mensagem-->
+            <div class="mt-3">
+                <input type="text" id="idMensagem" formControlName="mensagem" autocomplete="off" placeholder="Insira sua Mensagem">
+            </div>
+            <div *ngIf="!(formulario.get('mensagem')?.touched) || 
+            (formulario.get('mensagem')?.errors?.[''] === null)">‎</div> <!--Posicionamento-->
+
+            <div *ngIf="formulario.get('mensagem')?.errors?.['required'] && formulario.get('mensagem')?.touched"
+            class="text-danger">
+                Mensagem Obrigatória*
+            </div>
+            <div *ngIf="formulario.get('mensagem')?.errors?.['maxlength'] && formulario.get('mensagem')?.touched"
+            class="text-danger">
+                Respeite o Limite de 500 Caracteres
+            </div>
+
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+    
+    <div class="d-flex justify-content-center mt-5">
+        <button class="btn btn-primary" (click)="enviar()" [disabled]="!formulario.valid">Enviar</button>
+    </div>
+</form>
