@@ -509,3 +509,60 @@
 ~~~
 
 - Importante!! Na tela de login, se as credencias estiverem corretas, adicionar uma mudança de componente por lógica
+
+## Aula 6
+
+### Validação de Formulários
+
+- Importar ReactiveFormsModule ao app.module.ts
+
+- No componenteDesejado.component.ts, criar uma variável do tipo FormGroup
+
+~~~
+    nomeFormulário: FormGroup;
+~~~
+
+- Injetar o service FormBuilder no constructor
+
+~~~
+    constructor(private formBuilder: FormBuilder) { }
+~~~
+
+- componenteDesejado.component.html criar um formulário com os campos desejados, como este:
+~~~
+    <form [formGroup]="nomeFormulário" >
+
+        <div>
+            <input type="text" id="idNome" formControlName="nome">
+        </div>
+
+        <div>
+            <input type="text" id="idCpf" formControlName="cpf">
+        </div>
+        
+        <button (click)="cadastrar()">Cadastrar</button>
+    </form>
+~~~
+
+- Importar a classe validators no componente componenteDesejado.component.ts
+
+- Adicionar ao ts, os campos e as validações desejadas:
+
+~~~
+    contructor(private formBuilder: FormBuilder) {
+        this.nomeFormulário = this.formBuilder.group({
+        nome: ['', [Validators.required]],
+        cpf: ['', [Validators.required, Validators.minLength(11)]]
+        });
+    }
+~~~
+
+- Para mostar o usuário quando haver algum erro de validação, usa-se como parâmetros os erros do formulário:
+    - "Touched" serve para mostrar o erro após o usuário interagir com o campo
+    - Para analisar outros erros, basta digitar o nome da validação no ligar de "required"
+    - Caso não souber o nome do erro, pode-se digitar console.log(nomeFormulário.get('nome'))
+~~~
+    <div *ngIf="nomeFormulário.get('nome')?.errors?.['required'] && nomeFormulário.get('nome')?.touched>
+        Nome obrigatório
+    </div>
+~~~
